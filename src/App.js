@@ -49,7 +49,6 @@ function App() {
         .then(() => setSuccess('Log-in successful'))
         .catch(error => setError(error.response.data.errors))
     }
-
   }
 
   return (
