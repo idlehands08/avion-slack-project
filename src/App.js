@@ -30,10 +30,35 @@ function App() {
     }
   }
 
+  const handleLogin = async () => {
+    const payload = {
+      // email: '_1____user2@example.com',
+      // password: '12345678',
+      email: 'errorEmail@example.com',
+      password: '12345678',
+    }
+    const { 
+      email, 
+      password, 
+    } = payload
+
+    if (!isValidEmail(email)) {
+      return setError('Please enter a valid email address')
+    } else {
+      await userApi.login(payload)
+        .then(() => setSuccess('Log-in successful'))
+        .catch(error => setError(error.response.data.errors))
+    }
+
+  }
+
   return (
     <div>
       <button onClick={handleRegistration} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
         Register
+      </button>
+      <button onClick={handleLogin} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+        Login
       </button>
       { error ? error : success }
     </div>
