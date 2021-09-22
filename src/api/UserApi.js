@@ -19,16 +19,7 @@ const UserApi = {
 
         return API.request(options);
     },
-    sendMessage: (payload, headers) => {
-        const options = {
-            method: 'POST',
-            url: '/api/v1/messages',
-            data: payload,
-            headers: headers
-        };
 
-        return API.request(options);
-    }
 };
 
 export default UserApi;
