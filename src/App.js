@@ -9,6 +9,7 @@ function App() {
   const [accessToken, setAccessToken] = useState('')
   const [client, setClient] = useState('')
   const [loggedInUid, setLoggedInUid] = useState('')
+  const [expiry, setExpiry] = useState(0)
 
   const handleRegistration = async () => {
     const payload = {
@@ -54,6 +55,7 @@ function App() {
           setAccessToken(header['access-token'])
           setClient(header['client'])
           setLoggedInUid(header['uid'])
+          setExpiry(header['expiry'])
         })
         .catch(error => setError(error.response.data.errors))
     }
@@ -69,7 +71,8 @@ function App() {
     const headers = {
       'access-token': accessToken,
       'client': client,
-      'uid': loggedInUid
+      'uid': loggedInUid,
+      'expiry': expiry
     }
 
     await userApi.sendMessage(payload, headers)
