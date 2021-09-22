@@ -79,7 +79,7 @@ function App() {
       'body': "kamusta?"
     }
 
-    await messageApi.sendMessage(payload, axiosHeaders())
+    await messageApi.send(payload, axiosHeaders())
     .then(res => console.log(res))
     .catch(error => setError(error.response.data.errors))
   }
