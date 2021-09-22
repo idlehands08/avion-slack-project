@@ -78,7 +78,7 @@ function App() {
       'body': "kamusta?"
     }
 
-    await userApi.sendMessage(payload, axiosHeaders())
+    await userApi.send(payload, axiosHeaders())
     .then(res => console.log(res))
     .catch(error => setError(error.response.data.errors))
   }
