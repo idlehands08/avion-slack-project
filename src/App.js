@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import userApi from './api/UserApi';
 import channelApi from './api/ChannelApi';
+import messageApi from './api/MessageApi';
 import './App.css';
 import { isValidEmail } from './utils'
 
@@ -78,7 +79,7 @@ function App() {
       'body': "kamusta?"
     }
 
-    await userApi.send(payload, axiosHeaders())
+    await messageApi.send(payload, axiosHeaders())
     .then(res => console.log(res))
     .catch(error => setError(error.response.data.errors))
   }
@@ -90,6 +91,14 @@ function App() {
     };
 
     await channelApi.create(payload, axiosHeaders())
+    .then(res => console.log(res))
+    .catch(error => setError(error.response.data.errors))
+  }
+
+  const retrieveMessage = async () => {
+   const params =`?receiver_class=User&receiver_id=1`
+
+    await messageApi.retrieve(axiosHeaders(), params)
     .then(res => console.log(res))
     .catch(error => setError(error.response.data.errors))
   }
@@ -107,6 +116,9 @@ function App() {
       </button>
       <button onClick={createChannel} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
         Create channel
+        </button>
+      <button onClick={retrieveMessage} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+        Retrieve Messages
       </button>
       { error ? error : success }
     </div>
