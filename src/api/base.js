@@ -8,13 +8,13 @@ const UID = '';
 
 // axios header init to access api
 const API = axios.create({
-  baseURL: `${process.env.REACT_APP_API_URL}/api`,
+  baseURL: process.env.REACT_APP_API_URL,
   headers: {
-    'Content-Type': 'application/json',
-    'access-token': `${TOKEN}`,
-    'client': `${CLIENT}`,
-    'expiry': EXPIRY,
-    'uid': UID
+    // 'Content-Type': 'application/json',
+    // 'access-token': `${TOKEN}`,
+    // 'client': `${CLIENT}`,
+    // 'expiry': EXPIRY,
+    // 'uid': UID
   }
 });
 
