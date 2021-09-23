@@ -118,6 +118,37 @@ function App() {
       .catch(error => setError(error.response.data.errors))
   }
 
+  const usersChannel = async () => {
+
+    await userApi.channels(headers)
+      .then(res => console.log(res))
+      .catch(error => setError(error.response.data.errors))
+  }
+
+  const getChannelDetails = async () => {
+    const id = "2"
+
+    await channelApi.details(id, headers)
+      .then(res => console.log(res))
+      .catch(error => setError(error.response.data.errors))
+  }
+
+  const memberToChannel = async () => {
+    const payload = {
+      "id": 1,
+      "member_id": 3,
+      "name": 'asdfghj'
+  }
+
+    await channelApi.members(payload, headers)
+      .then(res => console.log(res))
+      .catch(error => setError(error.response.errors))
+  }
+
+
+  
+
+
   return (
     <div>
       <button onClick={handleRegistration} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
@@ -137,6 +168,15 @@ function App() {
       </button>
       <button onClick={handleLogout} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
         Logout
+        </button>
+      <button onClick={usersChannel} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+       Users Channel
+      </button>
+      <button onClick={getChannelDetails} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+       Channel Details
+      </button>
+      <button onClick={memberToChannel} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+       Add Member To Channel
       </button>
       { error ? error : success }
     </div>

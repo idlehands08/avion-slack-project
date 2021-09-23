@@ -19,7 +19,15 @@ const UserApi = {
 
     //     return API.request(options);
     // },
-
+    channels: (headers) => {
+        const options = {
+            method: 'GET',
+            url: '/api/v1/channels',
+            headers: headers 
+        };
+    
+        return API.request(options);
+    },
 };
 
 export default UserApi;
