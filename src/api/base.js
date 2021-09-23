@@ -12,4 +12,6 @@ const API = axios.create({
   }
 });
 
+console.log(Cookies.get('access-token'))
+
 export default API;

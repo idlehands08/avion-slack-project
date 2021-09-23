@@ -1,6 +1,7 @@
 import React from 'react';
 import Input from '../../shared/Input/Input';
 import Button from '../../shared/Button/Button';
+import Container from '../../shared/Container/Container';
 
 function Shared () {
     return (
@@ -31,6 +32,28 @@ function Shared () {
                 <Button 
                     text='Login'
                 />
+            </div>
+            <div>
+                <h3>Container</h3>
+                <Container>
+                    <Input 
+                        placeholder='Email'
+                        hasError={false}
+                        type='text'
+                        hasIcon={true}
+                        faIcon='envelope'
+                    />
+                    <Input 
+                        placeholder='Password'
+                        hasError={true}
+                        type='password'
+                        hasIcon={true}
+                        faIcon='lock'
+                    />
+                    <Button 
+                        text='Login'
+                    />
+                </Container>
             </div>
         </div>
     )
