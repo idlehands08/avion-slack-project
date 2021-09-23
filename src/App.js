@@ -13,13 +13,11 @@ function App() {
   const [loggedInUid, setLoggedInUid] = useState('');
   const [expiry, setExpiry] = useState(0);
 
-  const axiosHeaders = () => {
-    return {
-      'access-token': accessToken,
-      'client': client,
-      'uid': loggedInUid,
-      'expiry': expiry
-    }
+  const headers = {
+    'access-token': accessToken,
+    'client': client,
+    'uid': loggedInUid,
+    'expiry': expiry
   }
 
   const handleRegistration = async () => {
@@ -79,7 +77,7 @@ function App() {
       'body': "kamusta?"
     }
 
-    await messageApi.send(payload, axiosHeaders())
+    await messageApi.send(payload, headers)
     .then(res => console.log(res))
     .catch(error => setError(error.response.data.errors))
   }
@@ -90,17 +88,17 @@ function App() {
       'user_ids': [1, 2, 3, 4, 5]
     };
 
-    await channelApi.create(payload, axiosHeaders())
+    await channelApi.create(payload, headers)
     .then(res => console.log(res))
     .catch(error => setError(error.response.data.errors))
   }
 
   const retrieveMessage = async () => {
-   const params =`?receiver_class=User&receiver_id=1`
+    const params =`receiver_class=User&receiver_id=1`
 
-    await messageApi.retrieve(axiosHeaders(), params)
-    .then(res => console.log(res))
-    .catch(error => setError(error.response.data.errors))
+    await messageApi.retrieve(params, headers)
+      .then(res => console.log(res))
+      .catch(error => setError(error.response.data.errors))
   }
 
   return (
