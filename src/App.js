@@ -116,7 +116,7 @@ function App() {
   }
   const getRecentMessages = async () => {
 
-    await userApi.getRecentMessages()
+    await userApi.recentMessages()
       .then(res => console.log(res))
       .catch(error => setError(error.response.data.errors))
   }
@@ -146,6 +146,13 @@ function App() {
     await channelApi.members(payload)
       .then(res => console.log(res))
       .catch(error => setError(error.response.errors))
+  }
+
+  const getAllUsers = async () => {
+
+    await userApi.allUsers()
+    .then(res => console.log(res))
+    .catch(error => setError(error.response.errors))
   }
 
 
@@ -183,6 +190,9 @@ function App() {
       </button>
       <button onClick={getRecentMessages} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
        Get Recent Messages
+      </button>
+      <button onClick={getAllUsers} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+       Get All Users
       </button>
       { error ? error : success }
     </div>
