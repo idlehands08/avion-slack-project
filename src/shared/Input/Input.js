@@ -1,5 +1,5 @@
 import React from 'react';
-import './Input.css'
+import './Input.scoped.css'
 
 function Input ({ placeholder, value, hasError, type, faIcon, hasIcon = false }) {
     const setStyles = () => {
