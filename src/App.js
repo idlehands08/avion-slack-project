@@ -78,7 +78,6 @@ function App() {
       //     setLoggedInUid(header['uid'])
       //     setExpiry(header['expiry'])
 
-          
       //   })
       //   .catch(error => setError(error.response.data.errors))
     }
