@@ -1,5 +1,6 @@
 import React from 'react';
-import Input from '../../shared/Input/Input'
+import Input from '../../shared/Input/Input';
+import Button from '../../shared/Button/Button';
 
 function Shared () {
     return (
@@ -23,6 +24,12 @@ function Shared () {
                 <Input 
                     placeholder='Normal input'
                     type='text'
+                />
+            </div>
+            <div style={{width: '300px'}}>
+                <h3>Button</h3>
+                <Button 
+                    text='Login'
                 />
             </div>
         </div>
