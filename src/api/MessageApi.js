@@ -1,21 +1,19 @@
 import API from './base';
 
 const MessageApi = {
-    send:(payload, headers) => {
+    send:(payload) => {
         const options = {
             method: 'POST',
             url: '/api/v1/messages',
             data: payload,
-            headers: headers
         };
 
         return API.request(options);
     },
-    retrieve: (params, headers) => {
+    retrieve: (params) => {
         const options = {
             method: 'GET',
             url: `/api/v1/messages?${params}`,
-            headers: headers
         };
 
         return API.request(options);

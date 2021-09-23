@@ -10,11 +10,10 @@ const UserApi = {
 
         return API.request(options);
     },
-    channels: (headers) => {
+    channels: () => {
         const options = {
             method: 'GET',
             url: '/api/v1/channels',
-            headers: headers 
         };
     
         return API.request(options);
