@@ -6,20 +6,17 @@ import './App.css';
 import { isValidEmail } from './utils';
 
 import AuthApi from './services/AuthApi';
+import Cookies from 'js-cookie';
 
 function App() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
-  const [accessToken, setAccessToken] = useState('');
-  const [client, setClient] = useState('');
-  const [loggedInUid, setLoggedInUid] = useState('');
-  const [expiry, setExpiry] = useState(0);
 
   const headers = {
-    'access-token': accessToken,
-    'client': client,
-    'uid': loggedInUid,
-    'expiry': expiry
+    'access-token': Cookies.get('access-token'),
+    'client': Cookies.get('client'),
+    'uid': Cookies.get('uid'),
+    'expiry': Cookies.get('expiry')
   }
 
   const handleRegistration = async () => {
@@ -94,18 +91,18 @@ function App() {
       'body': "kamusta?"
     }
 
-    await messageApi.send(payload, headers)
+    await messageApi.send(payload)
     .then(res => console.log(res))
     .catch(error => setError(error.response.data.errors))
   }
 
   const createChannel = async () => {
     const payload = {
-      'name': 'channel 1',
+      'name': 'channel002',
       'user_ids': [1, 2, 3, 4, 5]
     };
 
-    await channelApi.create(payload, headers)
+    await channelApi.create(payload)
     .then(res => console.log(res))
     .catch(error => setError(error.response.data.errors))
   }
@@ -113,14 +110,14 @@ function App() {
   const retrieveMessage = async () => {
     const params =`receiver_class=User&receiver_id=1`
 
-    await messageApi.retrieve(params, headers)
+    await messageApi.retrieve(params)
       .then(res => console.log(res))
       .catch(error => setError(error.response.data.errors))
   }
 
   const usersChannel = async () => {
 
-    await userApi.channels(headers)
+    await userApi.channels()
       .then(res => console.log(res))
       .catch(error => setError(error.response.data.errors))
   }
@@ -128,7 +125,7 @@ function App() {
   const getChannelDetails = async () => {
     const id = "2"
 
-    await channelApi.details(id, headers)
+    await channelApi.details(id)
       .then(res => console.log(res))
       .catch(error => setError(error.response.data.errors))
   }
@@ -140,7 +137,7 @@ function App() {
       "name": 'asdfghj'
   }
 
-    await channelApi.members(payload, headers)
+    await channelApi.members(payload)
       .then(res => console.log(res))
       .catch(error => setError(error.response.errors))
   }

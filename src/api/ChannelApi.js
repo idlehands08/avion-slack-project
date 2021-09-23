@@ -1,31 +1,28 @@
 import API from './base';
 
 const ChannelApi = {
-    create: (payload, headers) => {
+    create: (payload) => {
         const options = {
             method: 'POST',
             url: '/api/v1/channels',
             data: payload,
-            headers: headers
         };
 
 
         return API.request(options);
     },
-    details: (id, headers) => {
+    details: (id) => {
         const options = {
             method: 'GET',
             url: `/api/v1/channels/${id}`,
-            headers: headers
         }
         return API.request(options);
     },
-    members: (payload, headers) => { 
+    members: (payload) => { 
         const options = {
             method: 'POST',
             url: '/api/v1/channels',
             data:payload,
-            headers: headers
         }
         return API.request(options);
     },

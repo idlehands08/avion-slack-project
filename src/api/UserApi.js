@@ -10,20 +10,10 @@ const UserApi = {
 
         return API.request(options);
     },
-    // login: (payload) => {
-    //     const options = {
-    //         method: 'POST',
-    //         url: '/api/v1/auth/sign_in',
-    //         data: payload,
-    //     };
-
-    //     return API.request(options);
-    // },
-    channels: (headers) => {
+    channels: () => {
         const options = {
             method: 'GET',
             url: '/api/v1/channels',
-            headers: headers 
         };
     
         return API.request(options);
