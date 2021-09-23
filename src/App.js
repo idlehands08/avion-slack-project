@@ -4,6 +4,7 @@ import channelApi from './api/ChannelApi';
 import messageApi from './api/MessageApi';
 import './App.css';
 import { isValidEmail } from './utils';
+
 import AuthApi from './services/AuthApi';
 
 function App() {
@@ -57,26 +58,34 @@ function App() {
     if (!isValidEmail(email)) {
       return setError('Please enter a valid email address')
     } else {
-      // uncomment this if magseset ka na sa cookies
-      // AuthApi.authenticate(email, password, (res) => {
-      //   if (!AuthApi.isAuthenticated()) {
-      //     setError('Whoops! Incorrect email or password');
-      //   } else {
-      //     setSuccess('Log-in successful')
-      //   }
-      // })
-      await userApi.login(payload)
-        .then(res => {
-          const header = res.headers
-          
+
+      AuthApi.authenticate(email, password, (res) => {
+        if (!AuthApi.isAuthenticated()) {
+          setError('Whoops! Incorrect email or password');
+        } else {
           setSuccess('Log-in successful')
-          setAccessToken(header['access-token'])
-          setClient(header['client'])
-          setLoggedInUid(header['uid'])
-          setExpiry(header['expiry'])
-        })
-        .catch(error => setError(error.response.data.errors))
+        }
+        
+      })
+
+      // await userApi.login(payload)
+      //   .then(res => {
+      //     const header = res.headers
+          
+      //     setSuccess('Log-in successful')
+      //     setAccessToken(header['access-token'])
+      //     setClient(header['client'])
+      //     setLoggedInUid(header['uid'])
+      //     setExpiry(header['expiry'])
+
+          
+      //   })
+      //   .catch(error => setError(error.response.data.errors))
     }
+  }
+
+  const handleLogout = () => {
+    AuthApi.logout();
   }
 
   const sendMessage = async () => {
@@ -126,6 +135,9 @@ function App() {
         </button>
       <button onClick={retrieveMessage} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
         Retrieve Messages
+      </button>
+      <button onClick={handleLogout} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+        Logout
       </button>
       { error ? error : success }
     </div>
