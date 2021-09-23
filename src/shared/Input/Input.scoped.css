@@ -1,5 +1,5 @@
 input {
-    width: 100%;
+    width: -webkit-fill-available;
     border-radius: .25rem;
     outline: none;
     border: 1px solid #415668;
@@ -23,7 +23,7 @@ input {
 .input-wrapper .icons {
     position: absolute;
     top: 12px;
-    right: -42px;
+    right: 15px;
 }
 
 .fa {
