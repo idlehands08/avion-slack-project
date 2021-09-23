@@ -114,6 +114,12 @@ function App() {
       .then(res => console.log(res))
       .catch(error => setError(error.response.data.errors))
   }
+  const getRecentMessages = async () => {
+
+    await userApi.getRecentMessages()
+      .then(res => console.log(res))
+      .catch(error => setError(error.response.data.errors))
+  }
 
   const usersChannel = async () => {
 
@@ -174,6 +180,9 @@ function App() {
       </button>
       <button onClick={memberToChannel} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
        Add Member To Channel
+      </button>
+      <button onClick={getRecentMessages} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+       Get Recent Messages
       </button>
       { error ? error : success }
     </div>

@@ -18,6 +18,14 @@ const UserApi = {
     
         return API.request(options);
     },
+    getRecentMessages: () => {
+        const options = {
+            method: 'GET',
+            url: '/api/v1/users/recent',
+        }
+
+        return API.request(options);
+    }
 };
 
 export default UserApi;
