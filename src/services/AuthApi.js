@@ -1,6 +1,8 @@
 import API from '../api/base';
+import Cookies from 'js-cookie'
 
 const AuthApi = () => {
+
     const isAuthenticated = () => {
         // get cookies if exist
         return true; // default
@@ -10,10 +12,16 @@ const AuthApi = () => {
         API.post('/api/v1/auth/sign_in', {
             'email': email,
             'password': password
-        }).then(({ data }) => {
+
+        }).then( ({data, headers}) => {
             // set cookies here
             if (data) {
-                window.location = '/';
+                console.log(data);
+                // window.location = '/';
+                Cookies.set('access-token', headers['access-token'])
+                Cookies.set('client', headers['client'])
+                Cookies.set('uid', headers['uid'])
+                Cookies.set('expiry', headers['expiry'])
             }
         }).catch(err => {
             console.log(err)
@@ -22,9 +30,13 @@ const AuthApi = () => {
         })
     }
 
+    //logout will remove cookies and redirect user back to the login page
     const logout = () => {
-        // remove access token and redirect to /login
-    }
+       Cookies.remove('access-token');
+       Cookies.remove('client');
+       Cookies.remove('uid');
+       Cookies.remove('expiry');
+   }
 
     return {
         isAuthenticated,
