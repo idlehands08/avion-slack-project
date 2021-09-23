@@ -6,20 +6,17 @@ import './App.css';
 import { isValidEmail } from './utils';
 
 import AuthApi from './services/AuthApi';
+import Cookies from 'js-cookie';
 
 function App() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
-  const [accessToken, setAccessToken] = useState('');
-  const [client, setClient] = useState('');
-  const [loggedInUid, setLoggedInUid] = useState('');
-  const [expiry, setExpiry] = useState(0);
 
   const headers = {
-    'access-token': accessToken,
-    'client': client,
-    'uid': loggedInUid,
-    'expiry': expiry
+    'access-token': Cookies.get('access-token'),
+    'client': Cookies.get('client'),
+    'uid': Cookies.get('uid'),
+    'expiry': Cookies.get('expiry')
   }
 
   const handleRegistration = async () => {
