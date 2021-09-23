@@ -3,7 +3,8 @@ import userApi from './api/UserApi';
 import channelApi from './api/ChannelApi';
 import messageApi from './api/MessageApi';
 import './App.css';
-import { isValidEmail } from './utils'
+import { isValidEmail } from './utils';
+import AuthApi from './services/AuthApi';
 
 function App() {
   const [error, setError] = useState('');
@@ -56,6 +57,14 @@ function App() {
     if (!isValidEmail(email)) {
       return setError('Please enter a valid email address')
     } else {
+      // uncomment this if magseset ka na sa cookies
+      // AuthApi.authenticate(email, password, (res) => {
+      //   if (!AuthApi.isAuthenticated()) {
+      //     setError('Whoops! Incorrect email or password');
+      //   } else {
+      //     setSuccess('Log-in successful')
+      //   }
+      // })
       await userApi.login(payload)
         .then(res => {
           const header = res.headers
