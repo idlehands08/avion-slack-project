@@ -10,15 +10,15 @@ const UserApi = {
 
         return API.request(options);
     },
-    login: (payload) => {
-        const options = {
-            method: 'POST',
-            url: '/api/v1/auth/sign_in',
-            data: payload,
-        };
+    // login: (payload) => {
+    //     const options = {
+    //         method: 'POST',
+    //         url: '/api/v1/auth/sign_in',
+    //         data: payload,
+    //     };
 
-        return API.request(options);
-    },
+    //     return API.request(options);
+    // },
 
 };
 
