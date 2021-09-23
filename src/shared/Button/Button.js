@@ -1,5 +1,5 @@
 import React from 'react';
-import './Button.css';
+import './Button.scoped.css';
 
 function Button ({ text }) {
     return (
