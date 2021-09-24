@@ -1,6 +1,7 @@
 import API from './base';
 
 const UserApi = {
+    // registers a new user
     register: (payload) => {
         const options = {
             method: 'POST',
@@ -10,6 +11,7 @@ const UserApi = {
 
         return API.request(options);
     },
+    // fetch the users channels
     channels: () => {
         const options = {
             method: 'GET',
@@ -18,6 +20,7 @@ const UserApi = {
     
         return API.request(options);
     },
+    // fetch the users recent messages
     recentMessages: () => {
         const options = {
             method: 'GET',
@@ -26,7 +29,8 @@ const UserApi = {
 
         return API.request(options);
     },
-    allUsers: () => {
+    // fetch all users
+    all: () => {
         const options = {
             method: 'GET',
             url: '/api/v1/users',

@@ -1,7 +1,8 @@
 import API from './base';
 
 const MessageApi = {
-    send:(payload) => {
+    // send a message to a specific user
+    send: (payload) => {
         const options = {
             method: 'POST',
             url: '/api/v1/messages',
@@ -10,6 +11,7 @@ const MessageApi = {
 
         return API.request(options);
     },
+    // fetch messages of a specific user
     retrieve: (params) => {
         const options = {
             method: 'GET',

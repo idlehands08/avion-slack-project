@@ -139,18 +139,17 @@ function App() {
   const memberToChannel = async () => {
     const payload = {
       "id": 1,
-      "member_id": 3,
-      "name": 'asdfghj'
+      "member_id": 3
   }
 
     await channelApi.members(payload)
       .then(res => console.log(res))
-      .catch(error => setError(error.response.errors))
+      .catch(error => console.log(error))
   }
 
   const getAllUsers = async () => {
 
-    await userApi.allUsers()
+    await userApi.all()
     .then(res => console.log(res))
     .catch(error => setError(error.response.errors))
   }
