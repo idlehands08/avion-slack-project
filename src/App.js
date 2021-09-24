@@ -148,15 +148,16 @@ function App() {
   }
 
   const getAllUsers = async () => {
-
     await userApi.all()
-    .then(res => console.log(res))
-    .catch(error => setError(error.response.errors))
+      .then(res => console.log(res))
+      .catch(error => setError(error.response.errors))
   }
 
-
-  
-
+  const getOwnedChannels = async () => {
+    await userApi.ownedChannels()
+      .then(res => console.log(res))
+      .catch(error => setError(error.response.errors))
+  }
 
   return (
     <div>
@@ -192,6 +193,9 @@ function App() {
       </button>
       <button onClick={getAllUsers} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
        Get All Users
+      </button>
+      <button onClick={getOwnedChannels} className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+       User owned channels
       </button>
       { error ? error : success }
     </div>
