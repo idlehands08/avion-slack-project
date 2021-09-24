@@ -3,5 +3,5 @@ export const isValidEmail = (email) => {
 }
 
 export const isEmpty = (string) => {
-    return !string.trim()
+    return !string ? true : false;
 }

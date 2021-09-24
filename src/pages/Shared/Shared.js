@@ -2,10 +2,11 @@ import React from 'react';
 import Input from '../../shared/Input/Input';
 import Button from '../../shared/Button/Button';
 import Container from '../../shared/Container/Container';
+import Sidebar from '../../shared/Sidebar/Sidebar';
 
 function Shared () {
     return (
-        <div>
+        <div className="container">
             <h1>List of shared components</h1>
             <div style={{width: '300px'}}>
                 <h3>Input</h3>
@@ -54,6 +55,10 @@ function Shared () {
                         text='Login'
                     />
                 </Container>
+            </div>
+            <div style={{width: '300px'}}>
+                <h3>Sidebar</h3>
+                <Sidebar />
             </div>
         </div>
     )

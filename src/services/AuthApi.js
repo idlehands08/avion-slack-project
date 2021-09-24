@@ -4,8 +4,7 @@ import Cookies from 'js-cookie'
 const AuthApi = () => {
 
     const isAuthenticated = () => {
-        // get cookies if exist
-        return true; // default
+        return Cookies.get('access-token') ? true : false;
     }
 
     const authenticate = (email, password, callback) => {
@@ -23,7 +22,7 @@ const AuthApi = () => {
                 Cookies.set('expiry', headers['expiry'])
             }
         }).catch(err => {
-            console.log(err)
+            return console.log(err)
         }).finally(() => {
             callback();
         })
