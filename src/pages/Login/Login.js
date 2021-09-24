@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { FaEnvelope, FaLock } from 'react-icons/fa';
 import Input from '../../shared/Input/Input';
 import Button from '../../shared/Button/Button';
 import Container from '../../shared/Container/Container';
@@ -85,24 +86,24 @@ function Login () {
                     placeholder='Email'
                     isValid={email.valid}
                     type='text'
-                    hasIcon={true}
-                    faIcon='envelope'
                     value={email.value}
                     handleChange={handleEmailChange}
                     message={email.error}
                     label='Email Address'
-                />
+                >
+                    <FaEnvelope />
+                </Input>
                 <Input 
                     placeholder='Password'
                     isValid={password.valid}
                     type='password'
-                    hasIcon={true}
-                    faIcon='lock'
                     value={password.value}
                     handleChange={handlePasswordChange}
                     message={password.error}
                     label='Password'
-                />
+                >
+                    <FaLock />
+                </Input>
                 <Button 
                     text='Login'
                     handleClick={handleLogin}

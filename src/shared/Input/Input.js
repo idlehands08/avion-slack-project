@@ -1,15 +1,13 @@
 import React from 'react';
-import FaIcon from '../FaIcon/FaIcon';
 
 import './Input.scoped.css'
 
 function Input ({ 
+    children,
     placeholder, 
     value, 
     isValid, 
     type, 
-    faIcon, 
-    hasIcon = false, 
     handleChange, 
     message,
     label
@@ -32,7 +30,7 @@ function Input ({
         <div>
             { label && <Label />}
             <div className='input-wrapper'>
-                { hasIcon && <FaIcon faIcon={faIcon} /> }
+                { children }
                 <input 
                     placeholder={placeholder}
                     value={value}

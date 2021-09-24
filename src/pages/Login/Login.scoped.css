@@ -1,0 +1,9 @@
+.input-wrapper svg {
+    position: absolute;
+    top: 20px;
+    right: 15px;
+}
+
+svg {
+    color: #52687c;
+}
