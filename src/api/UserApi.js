@@ -37,6 +37,14 @@ const UserApi = {
         }
 
         return API.request(options);
+    },
+    ownedChannels: () => {
+        const options = {
+            method: 'GET',
+            url: '/api/v1/channel/owned',
+        }
+
+        return API.request(options);
     }
 };
 
