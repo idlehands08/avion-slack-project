@@ -9,7 +9,6 @@ const ChannelApi = {
             data: payload,
         };
 
-
         return API.request(options);
     },
     // fetch the details of a channel
@@ -18,6 +17,7 @@ const ChannelApi = {
             method: 'GET',
             url: `/api/v1/channels/${id}`,
         }
+
         return API.request(options);
     },
     // fetch the members the belongs to a channel
@@ -27,6 +27,7 @@ const ChannelApi = {
             url: '/api/v1/channel/add_member',
             data:payload,
         }
+        
         return API.request(options);
     },
 };

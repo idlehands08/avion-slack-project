@@ -1,6 +1,13 @@
+@font-face {
+    font-family: 'Noto Sans', sans-serif;
+    src: local('Noto Sans', sans-serif), url(./fonts/Noto_Sans/NotoSans-Regular.ttf) format('ttf');
+}
+  
 body {
     min-width: 500px;
     margin: 0;
+    overflow: hidden;
+    font-family: 'Noto Sans', sans-serif;
 }
 
 .content-center {
@@ -8,10 +15,23 @@ body {
     justify-content: center;
 }
 
+.align-middle {
+    align-items: center;
+}
+
 .d-flex {
     display: flex;
 }
 
-.full-height {
+.full-content {
     height: 100vh;
+    width: 100vw;
+    overflow: auto;
+}
+
+.container {
+    padding: 10px;
+    overflow: auto;
+    height: 100vh;
+    width: 100%;
 }
