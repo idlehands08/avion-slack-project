@@ -1,0 +1,17 @@
+body {
+    min-width: 500px;
+    margin: 0;
+}
+
+.content-center {
+    align-items: center;
+    justify-content: center;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.full-height {
+    height: 100vh;
+}

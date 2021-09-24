@@ -1,10 +1,10 @@
 import React from 'react';
 import './Button.scoped.css';
 
-function Button ({ text }) {
+function Button ({ text, handleClick }) {
     return (
         <div>
-            <button>{ text }</button>
+            <button onClick={handleClick}>{ text }</button>
         </div>
     )
 }

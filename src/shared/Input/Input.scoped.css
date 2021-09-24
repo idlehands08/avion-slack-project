@@ -2,7 +2,7 @@ input {
     width: -webkit-fill-available;
     border-radius: .25rem;
     outline: none;
-    border: 1px solid #415668;
+    border: 1px solid #4156682b;
     padding: .75rem 45px .75rem .75rem;
     box-shadow: 0 4px 6px -1px 
         rgba(0, 0, 0, .1), 0 2px 4px -1px 
@@ -10,7 +10,7 @@ input {
 }
 
 .red-border-line {
-    border: 1.5px solid #b53c36 !important;
+    border: 1px solid #e74444 !important;
     box-shadow: 0 4px 6px -1px 
         rgba(181, 60, 54, .1), 0 2px 4px -1px 
         rgba(181, 60, 54, .09);
@@ -18,14 +18,16 @@ input {
 
 .input-wrapper {
     position: relative;
+    padding-top: 7px;
 }
 
-.input-wrapper .icons {
-    position: absolute;
-    top: 12px;
-    right: 15px;
+p {
+    margin: 0;
+    color: #e74444;
+    font-size: .70rem;
+    margin-top: 7px;
 }
 
-.fa {
-    color: #52687c;
+label {
+    font-size: .8rem;
 }

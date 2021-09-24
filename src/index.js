@@ -5,7 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 
 import Routes from './routes';
 
-import './index.css';
+import './global.css';
 
 ReactDOM.render(
   <Router>
