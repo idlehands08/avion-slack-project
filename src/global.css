@@ -23,6 +23,10 @@ body {
     display: flex;
 }
 
+.flex-column {
+    flex-direction: column;
+}
+
 .full-content {
     height: 100vh;
     width: 100vw;
@@ -35,3 +39,4 @@ body {
     height: 100vh;
     width: 100%;
 }
+

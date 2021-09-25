@@ -1,10 +1,16 @@
+import SearchBar from '../SearchBar/SearchBar';
+import { BiTime } from 'react-icons/bi';
+import { FiHelpCircle } from 'react-icons/fi';
+import './Header.css';
 
 function Header () {
     return (
     <header>
-        <i class="fas fa-arrow-left"></i>
-        <i class="fas fa-arrow-right"></i>
-        <i class="fas fa-history"></i>
-    </header>
+        < BiTime className = 'bi-history-icon' />
+        <SearchBar placeholder={'Search Avion School'}/>
+        <FiHelpCircle className="help-icon" />
+   </header>
     )
 }
+
+export default Header;

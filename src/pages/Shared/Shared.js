@@ -3,6 +3,8 @@ import Input from '../../shared/Input/Input';
 import Button from '../../shared/Button/Button';
 import Container from '../../shared/Container/Container';
 import Sidebar from '../../shared/Sidebar/Sidebar';
+import Header from '../../shared/Header/Header';
+import SearchBar from '../../shared/SearchBar/SearchBar';
 
 function Shared () {
     return (
@@ -59,6 +61,14 @@ function Shared () {
             <div style={{width: '300px'}}>
                 <h3>Sidebar</h3>
                 <Sidebar />
+            </div>
+            <div>
+                <h3>SearchBar</h3>
+                <SearchBar placeholder={'Insert placeholder here'} />
+            </div>
+            <div>
+                <h3>Header</h3>
+                <Header />
             </div>
         </div>
     )
