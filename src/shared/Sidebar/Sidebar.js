@@ -43,8 +43,8 @@ function Sidebar ({ routes }) {
                 <div className="parent-navlink" onClick={handleToggling}>
                     <div className="d-flex align-middle parent-navlink-item">
                         { !isToggled ? 
-                            <VscTriangleRight className="fa-triangle" /> :
-                            <VscTriangleDown className="fa-triangle" />
+                            <VscTriangleRight className="vsc-triangle" /> :
+                            <VscTriangleDown className="vsc-triangle" />
                         }
                         Direct Messages
                     </div>
