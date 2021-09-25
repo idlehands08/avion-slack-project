@@ -14,7 +14,6 @@ const AuthApi = () => {
         API.post('/api/v1/auth/sign_in', {
             'email': email,
             'password': password
-
         }).then(({ data, headers }) => {
             if (data) {
                 Cookies.set('access-token', headers['access-token'])

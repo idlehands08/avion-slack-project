@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { isValidEmail, isEmpty } from '../../utils'
+
 import Input from '../../shared/Input/Input';
 import Button from '../../shared/Button/Button';
 import Container from '../../shared/Container/Container';
+import GoogleLogin from 'react-google-login';
+import { FcGoogle } from 'react-icons/fc';
+
 import authApi from '../../services/AuthApi';
-import { isValidEmail, isEmpty } from '../../utils'
+import userApi from '../../api/UserApi';
 
 import './Login.scoped.css';
 
@@ -83,33 +88,67 @@ function Login () {
         setPassword({ ...password, value: e.target.value });
     }
 
+    const responseGoogle = google => {
+        if (!google.error) {
+            const { profileObj } = google;
+            const payload = {
+                email: profileObj.email,
+                password: profileObj.email,
+                password_confirmation: profileObj.email
+            }
+
+            authApi.authenticate(profileObj.email, profileObj.email, res => {
+                if (!res.result) {
+                    userApi.register(payload)
+                        .then(() => authApi.authenticate(profileObj.email, profileObj.email, () => console.log('success')))
+                        .catch(error => console.log(error.response.data.errors.full_messages))
+                }
+            })
+        }
+    }
+
     return (
-        <div className="d-flex content-center full-content">
+        <div className="d-flex content-center text-center content">
             <Container>
+                <img alt="Slack" src="https://a.slack-edge.com/bv1-9/slack_logo-ebd02d1.svg" height="34" title="Slack" />
+                <h1>Sign in to Slack</h1>
+                <div className="description">We suggest using the <strong>email address you use at work.</strong></div>
+                <GoogleLogin 
+                    clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                    buttonText="Sign in with Google" 
+                    onSuccess={responseGoogle}
+                    onFailure={responseGoogle}
+                    fullWidth
+                    cookiePolicy={'single_host_origin'}
+                    render={renderProps => (
+                        <button onClick={renderProps.onClick} id="google-login-btn">
+                            <FcGoogle className="fc-icon" /> Sign in with Google
+                        </button>
+                    )}
+                />  
+                <div className="divider">
+                    <small className="divider-text">OR</small>
+                </div>
                 <Input 
-                    placeholder='Email'
+                    placeholder='name@work-email.com'
                     isValid={email.valid}
                     type='text'
-                    hasIcon={true}
-                    faIcon='envelope'
                     value={email.value}
                     handleChange={handleEmailChange}
                     message={email.error}
-                    label='Email Address'
+                    customClass='remove-padding'
                 />
                 <Input 
                     placeholder='Password'
                     isValid={password.valid}
                     type='password'
-                    hasIcon={true}
-                    faIcon='lock'
                     value={password.value}
                     handleChange={handlePasswordChange}
                     message={password.error}
-                    label='Password'
+                    customClass='remove-padding'
                 />
                 <Button 
-                    text='Login'
+                    text='Sign In with Email'
                     handleClick={handleLogin}
                 />
             </Container>
