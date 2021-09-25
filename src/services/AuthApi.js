@@ -24,9 +24,7 @@ const AuthApi = () => {
                 window.location= '/'
             }
         }).catch(err => {
-            return console.log(err.response.data.errors)
-        }).finally(() => {
-            callback();
+            callback(err.response.data)
         })
     }
 
