@@ -5,10 +5,10 @@ import Header from '../../shared/Header/Header';
 
 function UserRoutes ({ component: Component, ...rest }) {
     return (
-        <div className="d-flex flex-column">
-            <Header />
+        <div>
+            { window.location.pathname !== '/login' && <Header /> }
             <div className="d-flex">
-                <Sidebar />
+                { window.location.pathname !== '/login' && <Sidebar /> }
                 <Route
                     {...rest}
                     render={ props => <Component {...props} /> }
