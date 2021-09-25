@@ -8,8 +8,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - once cloning is done, navigate to the `project dir`
 - run `npm start` or `yarn start` (this will create node_modules)
 
-### `yarn start`
-
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
