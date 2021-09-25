@@ -1,7 +1,7 @@
 import SearchBar from '../SearchBar/SearchBar';
 import { BiTime } from 'react-icons/bi';
 import { FiHelpCircle } from 'react-icons/fi';
-import './Header.css';
+import './Header.scoped.css';
 
 function Header () {
     return (
