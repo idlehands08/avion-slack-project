@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Input from '../../shared/Input/Input';
 import Button from '../../shared/Button/Button';
 import Container from '../../shared/Container/Container';
-
+import authApi from '../../services/AuthApi';
 import { isValidEmail, isEmpty } from '../../utils'
 
 import './Login.scoped.css';
@@ -20,10 +20,14 @@ function Login () {
     });
 
     useEffect(() => {
-        handleRegistration(email, password);
+        handleAuthentication(email, password);
     }, [email, password])
 
     const handleLogin = () => {
+        handleValidation();
+    }
+
+    const handleValidation = () =>{
         if (isEmpty(email.value)) {
             setEmail(email => ({ 
                     ...email,
@@ -60,14 +64,14 @@ function Login () {
         }
     }
 
-    const handleRegistration = (email, password) => {
-        if (email.value && email.valid && password.value && password.valid) {
-            // perform user registartion here
-            // use the api we made
-            // integrate api with frontend
-            // once login successful, redirect to '/' using window.location = '/'
-            
-            console.log('Login successful');
+    const handleAuthentication = (email, password) => {
+        if (email.valid && password.valid) {
+            authApi.authenticate(email.value, password.value, () => {
+                if (!authApi.isAuthenticated) {
+                    console.log('Whoops! Incorrect email or password!')
+                }
+            })
+         
         }
     }
 
