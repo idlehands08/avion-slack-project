@@ -19,7 +19,7 @@ function App() {
 
   const handleRegistration = async () => {
     const payload = {
-      email: '_1____user2@example.com',
+      email: '_1z____user2@example.com',
       password: '12345678',
       password_confirmation: '12345678'
     }
@@ -35,7 +35,9 @@ function App() {
       return setError('Password does not match')
     } else {
       await userApi.register(payload)
-        .then(() => setSuccess('Successfully registered'))
+        .then((r) => {
+          console.log(r)
+        })
         .catch(error => setError(error.response.data.errors.full_messages))
     }
   }

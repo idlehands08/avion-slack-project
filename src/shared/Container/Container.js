@@ -3,7 +3,7 @@ import './Container.scoped.css';
 
 function Container ({ children }) {
     return (
-        <div className='container-wrapper'>
+        <div className='d-flex flex-column container-wrapper'>
             { children }
         </div>
     )

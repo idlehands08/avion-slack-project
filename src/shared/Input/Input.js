@@ -10,7 +10,8 @@ function Input ({
     type, 
     handleChange, 
     message,
-    label
+    label,
+    customClass
 }) {
     const setStyles = () => {
         if (isValid === false) {
@@ -29,12 +30,12 @@ function Input ({
     return (
         <div>
             { label && <Label />}
-            <div className='input-wrapper'>
+            <div className={`input-wrapper ${customClass}`}>
                 { children }
                 <input 
                     placeholder={placeholder}
                     value={value}
-                    className={setStyles()}
+                    className={setStyles}
                     type={type}
                     onChange={handleChange}
                 />

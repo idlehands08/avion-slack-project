@@ -1,19 +1,13 @@
 input {
     width: -webkit-fill-available;
-    border-radius: .25rem;
+    border-radius: 2px;
     outline: none;
-    border: 1px solid #4156682b;
+    border: 1px solid #BABABA;
     padding: .75rem 45px .75rem .75rem;
-    box-shadow: 0 4px 6px -1px 
-        rgba(0, 0, 0, .1), 0 2px 4px -1px 
-        rgba(0, 0, 0, .06);
 }
 
 .red-border-line {
     border: 1px solid #e74444 !important;
-    box-shadow: 0 4px 6px -1px 
-        rgba(181, 60, 54, .1), 0 2px 4px -1px 
-        rgba(181, 60, 54, .09);
 }
 
 .input-wrapper {
@@ -30,4 +24,8 @@ p {
 
 label {
     font-size: .8rem;
+}
+
+.remove-padding {
+    padding: unset;
 }
