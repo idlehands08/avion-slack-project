@@ -66,12 +66,12 @@ function Login () {
 
     const handleAuthentication = (email, password) => {
         if (email.valid && password.valid) {
-            authApi.authenticate(email.value, password.value, () => {
-                if (!authApi.isAuthenticated) {
-                    console.log('Whoops! Incorrect email or password!')
+            authApi.authenticate(email.value, password.value, res => {
+                if (!res.result) {
+                    setEmail({ ...email,  valid: false });
+                    setPassword({ ...password, valid: false });
                 }
             })
-         
         }
     }
 
