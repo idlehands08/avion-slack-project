@@ -6,7 +6,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 - clone the repository by running this command `git clone https://github.com/idlehands08/avion-slack-project.git`
 - once cloning is done, navigate to the `project dir`
-- run `npm start` or `yarn start` (this will create node_modules)
+- run command `npm install` to download node_module packages
+- run `npm start` or `yarn start` to run the application
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
