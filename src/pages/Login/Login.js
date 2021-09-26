@@ -11,6 +11,7 @@ import authApi from '../../services/AuthApi';
 import userApi from '../../api/UserApi';
 
 import './Login.scoped.css';
+import Cookies from 'js-cookie';
 
 function Login () {
     const [email, setEmail] = useState({
@@ -25,7 +26,12 @@ function Login () {
     });
 
     useEffect(() => {
-        handleAuthentication(email, password);
+        if(Cookies.get('access-token') !== undefined) {
+            window.location='/';
+        }
+        else{
+            handleAuthentication(email, password);
+        }
     }, [email, password])
 
     const handleLogin = () => {
