@@ -5,7 +5,9 @@ import Input from '../../shared/Input/Input';
 import Button from '../../shared/Button/Button';
 import Container from '../../shared/Container/Container';
 import GoogleLogin from 'react-google-login';
+import AppleSignin from 'react-apple-signin-auth';
 import { FcGoogle } from 'react-icons/fc';
+import { AiFillApple } from 'react-icons/ai';
 
 import authApi from '../../services/AuthApi';
 import userApi from '../../api/UserApi';
@@ -127,7 +129,22 @@ function Login () {
                             <FcGoogle className="fc-icon" /> Sign in with Google
                         </button>
                     )}
-                />  
+                />
+                <AppleSignin 
+                    authOptions={{
+                        clientId: 'com.example.web',
+                        scope: 'email name',
+                        redirectURI: 'https://example.com',
+                        state: '',
+                        nonce: 'nonce',
+                        usePopup: true,
+                    }}
+                    render={renderProps => (
+                        <button onClick={renderProps.onClick} id="apple-login-btn">
+                            <AiFillApple className="ai-icon" /> Sign in with Apple
+                        </button>
+                    )}
+                />
                 <div className="divider">
                     <small className="divider-text">OR</small>
                 </div>
