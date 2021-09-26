@@ -7,6 +7,7 @@ import Home from '../pages/Home/Home';
 import Login from '../pages/Login/Login';
 import Shared from '../pages/Shared/Shared';
 
+import AuthRoute from './middleware/auth.route';
 import UserRoutes from './middleware/user.route';
 
 const routes = () => {
@@ -14,7 +15,7 @@ const routes = () => {
         <Switch>
             <UserRoutes path="/temporary" exact component={App} />
             <UserRoutes path="/" exact component={Home} />
-            <UserRoutes path="/login" exact component={Login} />
+            <AuthRoute path="/login" exact component={Login} />
             <UserRoutes path="/shared" exact component={Shared} />
         </Switch>
     );
