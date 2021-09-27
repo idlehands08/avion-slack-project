@@ -4,7 +4,7 @@ import Button from '../../shared/Button/Button';
 import Container from '../../shared/Container/Container';
 import Sidebar from '../../shared/Sidebar/Sidebar';
 import Header from '../../shared/Header/Header';
-import SearchBar from '../../shared/SearchBar/SearchBar';
+import Search from '../../shared/Search/Search';
 
 function Shared () {
     return (
@@ -63,8 +63,8 @@ function Shared () {
                 <Sidebar />
             </div>
             <div>
-                <h3>SearchBar</h3>
-                <SearchBar placeholder={'Insert placeholder here'} />
+                <h3>Search</h3>
+                <Search placeholder={'Insert placeholder here'} />
             </div>
             <div>
                 <h3>Header</h3>

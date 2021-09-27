@@ -4,7 +4,7 @@
     margin: 0;    
 }
 
-.container-searchForm { 
+.container-searchform { 
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -34,7 +34,7 @@ header {
     padding: 16px;
     width: 924px;
 }
-input {
+/* input {
     width: 800px;
     height: 22px;
     margin-left: 20px;
@@ -42,8 +42,5 @@ input {
     border: none;
     font-size: 1rem;
     color: 595859;
-}
-
-input:focus {
     outline: none;
-}
+} */
