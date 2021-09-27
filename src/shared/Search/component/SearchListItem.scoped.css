@@ -10,6 +10,10 @@ li {
     cursor: pointer;
 }
 
+li:first-child {
+    border-top: 1px solid #DDDDDD;
+}
+
 li:hover {
     background-color: #1164A3;
     color:  #fdffff;
