@@ -9,7 +9,7 @@ import style from './Sidebar.scoped.css';
 import Cookies from 'js-cookie';
 
 function Sidebar ({ routes }) {
-    let history = useHistory()
+    let history = useHistory();
     const [isToggled, setIsToggled] = useState(false);
     const [directMessageList, setDirectMessageList]  = useState([]);
 
@@ -23,41 +23,31 @@ function Sidebar ({ routes }) {
 
     useEffect(() => {
        getDirectMessages();
-    }, [])
+    }, []);
 
     const handleToggling = () => {
-        setIsToggled(!isToggled)
-        rearrangeArray(directMessageList)
+        setIsToggled(!isToggled);
     }
 
     const showCloseIcon = () => {
-        console.log('hovered')
+        console.log('hovered');
     }
 
     const setHistory = () => {
-        history.push(window.location.pathname)
+        history.push(window.location.pathname);
     }
 
     const rearrangeArray = (array) => {
-        let tempArray = [];
-        tempArray = array.filter(item => {
-            if(item.uid === Cookies.get('uid')){
-                return item;
-            }
-        }).concat(array.filter(item => {
-            if(item.uid !== Cookies.get('uid')) {
-                return item;
-            }
-        }));
-        setDirectMessageList(tempArray);
+        array = array.filter(item => item.uid === Cookies.get('uid'))
+            .concat(array.filter(item => item.uid !== Cookies.get('uid')));
+        setDirectMessageList(array);
     }
     
     const getDirectMessages = async () => {
-
         await UserApi.recentMessages()
-          .then(res =>{rearrangeArray(res.data.data)})
+          .then(res =>rearrangeArray(res.data.data))
           .catch(error => console.log(error.response.data.errors))
-      }
+    }
 
     return (
         <div>
