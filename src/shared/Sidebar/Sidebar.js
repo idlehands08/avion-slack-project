@@ -7,6 +7,7 @@ import { TiMessages, TiMessage } from 'react-icons/ti';
 import { FaRegUser } from 'react-icons/fa';
 import style from './Sidebar.scoped.css';
 import Cookies from 'js-cookie';
+import faker from 'faker';
 
 function Sidebar ({ routes }) {
     let history = useHistory();
@@ -40,6 +41,9 @@ function Sidebar ({ routes }) {
     const rearrangeArray = (array) => {
         array = array.filter(item => item.uid === Cookies.get('uid'))
             .concat(array.filter(item => item.uid !== Cookies.get('uid')));
+            array.map(item => {
+                item.name=faker.fake("{{name.firstName}} {{name.lastName}}");
+            })
         setDirectMessageList(array);
     }
     
