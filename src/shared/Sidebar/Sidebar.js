@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, useHistory } from "react-router-dom";
+import DirectMessageList from './component/DirectMessageList';
+import UserApi from '../../api/UserApi';
 import { VscTriangleRight, VscTriangleDown } from 'react-icons/vsc';
 import { TiMessages, TiMessage } from 'react-icons/ti';
 import { FaRegUser } from 'react-icons/fa';
 import style from './Sidebar.scoped.css';
 
-
 function Sidebar ({ routes }) {
     let history = useHistory()
     const [isToggled, setIsToggled] = useState(false);
+    const [directMessageList, setDirectMessageList]  = useState([]);
 
     const NavHeader = () => {
         return (
@@ -17,6 +19,10 @@ function Sidebar ({ routes }) {
             </header>
         );
     }
+
+    useEffect(() => {
+       getDirectMessages();
+    }, [])
 
     const handleToggling = () => {
         setIsToggled(!isToggled)
@@ -29,6 +35,13 @@ function Sidebar ({ routes }) {
     const setHistory = () => {
         history.push(window.location.pathname)
     }
+
+    const getDirectMessages = async () => {
+
+        await UserApi.recentMessages()
+          .then(res =>{setDirectMessageList(res.data.data)})
+          .catch(error => console.log(error.response.data.errors))
+      }
 
     return (
         <div>
@@ -49,22 +62,7 @@ function Sidebar ({ routes }) {
                         Direct Messages
                     </div>
                     { isToggled &&
-                        <div>
-                            <NavLink 
-                                onMouseEnter={showCloseIcon} 
-                                to={`recipient/1`} 
-                                exact activeClassName={style.isActive} 
-                                className="children-item">
-                                <FaRegUser /> Geoff
-                            </NavLink>
-                            <NavLink 
-                                to={`recipient/2`} 
-                                exact 
-                                activeClassName={style.isActive} 
-                                className="children-item">
-                                <FaRegUser /> Sean
-                            </NavLink>
-                        </div>
+                            <DirectMessageList showCloseIcon={showCloseIcon} directMessageList={directMessageList} />
                     }
                 </div>
             </nav>
