@@ -6,6 +6,7 @@ import { VscTriangleRight, VscTriangleDown } from 'react-icons/vsc';
 import { TiMessages, TiMessage } from 'react-icons/ti';
 import { FaRegUser } from 'react-icons/fa';
 import style from './Sidebar.scoped.css';
+import Cookies from 'js-cookie';
 
 function Sidebar ({ routes }) {
     let history = useHistory()
@@ -26,6 +27,7 @@ function Sidebar ({ routes }) {
 
     const handleToggling = () => {
         setIsToggled(!isToggled)
+        rearrangeArray(directMessageList)
     }
 
     const showCloseIcon = () => {
@@ -36,10 +38,24 @@ function Sidebar ({ routes }) {
         history.push(window.location.pathname)
     }
 
+    const rearrangeArray = (array) => {
+        let tempArray = [];
+        tempArray = array.filter(item => {
+            if(item.uid === Cookies.get('uid')){
+                return item;
+            }
+        }).concat(array.filter(item => {
+            if(item.uid !== Cookies.get('uid')) {
+                return item;
+            }
+        }));
+        setDirectMessageList(tempArray);
+    }
+    
     const getDirectMessages = async () => {
 
         await UserApi.recentMessages()
-          .then(res =>{setDirectMessageList(res.data.data)})
+          .then(res =>{rearrangeArray(res.data.data)})
           .catch(error => console.log(error.response.data.errors))
       }
 
@@ -62,7 +78,7 @@ function Sidebar ({ routes }) {
                         Direct Messages
                     </div>
                     { isToggled &&
-                            <DirectMessageList showCloseIcon={showCloseIcon} directMessageList={directMessageList} />
+                        <DirectMessageList showCloseIcon={showCloseIcon} directMessageList={directMessageList} />
                     }
                 </div>
             </nav>
