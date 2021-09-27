@@ -9,7 +9,7 @@ function DirectMessageItem ({ item, showCloseIcon }) {
             to={`recipient/1`} 
             exact activeClassName={style.isActive} 
             className="direct-message-item">
-            <FaRegUser /> {item}
+            <FaRegUser /> {item.name}
         </NavLink>
     )
 }

@@ -4,7 +4,7 @@ import './DirectMessageList.scoped.css'
 function DirectMessageList ({ showCloseIcon, directMessageList }) {
     return (
         <ul>
-            { directMessageList.map(item => <DirectMessageItem item={item.uid} showCloseIcon={showCloseIcon} />) }
+            { directMessageList.map(item => <DirectMessageItem item={item} showCloseIcon={showCloseIcon} />) }
         </ul>
     )
 }
