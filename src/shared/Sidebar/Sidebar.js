@@ -4,7 +4,7 @@ import DirectMessageList from './component/DirectMessageList';
 import UserApi from '../../api/UserApi';
 import { VscTriangleRight, VscTriangleDown } from 'react-icons/vsc';
 import { TiMessages, TiMessage } from 'react-icons/ti';
-import { FaRegUser } from 'react-icons/fa';
+import { IoCreateOutline } from 'react-icons/io5';
 import style from './Sidebar.scoped.css';
 import Cookies from 'js-cookie';
 import faker from 'faker';
@@ -13,11 +13,15 @@ function Sidebar ({ routes }) {
     let history = useHistory();
     const [isToggled, setIsToggled] = useState(false);
     const [directMessageList, setDirectMessageList]  = useState([]);
+    const [loggedInUserId, setLoggedInUserId] = useState(0);
 
     const NavHeader = () => {
         return (
             <header className="d-flex align-middle">
                 Avion Slack
+                <button>
+                    <IoCreateOutline className="io-create" />
+                </button>
             </header>
         );
     }
@@ -43,7 +47,9 @@ function Sidebar ({ routes }) {
             .concat(array.filter(item => item.uid !== Cookies.get('uid')));
             array.map(item => {
                 item.name=faker.fake("{{name.firstName}} {{name.lastName}}");
+                item.image = faker.image.avatar();
             })
+        setLoggedInUserId(array[0].id); 
         setDirectMessageList(array);
     }
     
@@ -72,7 +78,7 @@ function Sidebar ({ routes }) {
                         Direct Messages
                     </div>
                     { isToggled &&
-                        <DirectMessageList showCloseIcon={showCloseIcon} directMessageList={directMessageList} />
+                        <DirectMessageList showCloseIcon={showCloseIcon} directMessageList={directMessageList} loggedInUserId={loggedInUserId} />
                     }
                 </div>
             </nav>
