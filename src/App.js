@@ -10,13 +10,6 @@ function App() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
-  const headers = {
-    'access-token': Cookies.get('access-token'),
-    'client': Cookies.get('client'),
-    'uid': Cookies.get('uid'),
-    'expiry': Cookies.get('expiry')
-  }
-
   const handleRegistration = async () => {
     const payload = {
       email: '_1z____user2@example.com',

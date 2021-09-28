@@ -44,9 +44,12 @@ function Sidebar ({ routes }) {
     const rearrangeArray = (array) => {
         array = array.filter(item => item.uid === Cookies.get('uid'))
             .concat(array.filter(item => item.uid !== Cookies.get('uid')));
-            array.map(item => {
-                item.name=faker.fake("{{name.firstName}} {{name.lastName}}");
-            })
+            
+        array.map(item => {
+            item.name=faker.fake("{{name.firstName}} {{name.lastName}}");
+            item.image=faker.fake("{{image.avatar}}");
+        });
+
         setDirectMessageList(array);
     }
     
