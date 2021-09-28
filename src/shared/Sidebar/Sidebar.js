@@ -4,7 +4,7 @@ import DirectMessageList from './component/DirectMessageList';
 import UserApi from '../../api/UserApi';
 import { VscTriangleRight, VscTriangleDown } from 'react-icons/vsc';
 import { TiMessages, TiMessage } from 'react-icons/ti';
-import { FaRegUser } from 'react-icons/fa';
+import { IoCreateOutline } from 'react-icons/io5';
 import style from './Sidebar.scoped.css';
 import Cookies from 'js-cookie';
 import faker from 'faker';
@@ -18,6 +18,9 @@ function Sidebar ({ routes }) {
         return (
             <header className="d-flex align-middle">
                 Avion Slack
+                <button>
+                    <IoCreateOutline className="io-create" />
+                </button>
             </header>
         );
     }
