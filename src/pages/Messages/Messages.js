@@ -1,27 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import ConversationItems from './component/ConversationItems';
-import ConvoHeader from './component/ConvoHeader';
+import ConversationItems from './component/Conversation';
 import MessageApi from '../../api/MessageApi';
-import './Conversation.scoped.css';
-import faker from 'faker';
+import './Messages.scoped.css';
 
-import Cookies from 'js-cookie';
-import TextArea from '../TextArea/TextArea';
+import TextArea from '../../shared/TextArea/TextArea';
 
-function Conversation ({ participantId }) {
+function Messages ({ participantId, imageParticipant, imageLoggedInUser,  }) {
 
     const [messages, setMessages] = useState([]);
-    const [imageLoggedInUser, setImageLoggedInUser] = useState('');
-    const [imageParticipant, setImageParticipant] = useState('');
 
     useEffect(() => {
         retrieveMessage();
-        setImageLoggedInUser(faker.internet.avatar());
-        setImageParticipant(faker.internet.avatar());
      },[]);
     
      const retrieveMessage = async () => {
-        const params =`receiver_class=User&receiver_id=800`
+        const params =`receiver_class=User&receiver_id=${ participantId }`
     
         await MessageApi.retrieve(params)
           .then(res => setMessages(res.data.data))
@@ -48,4 +41,4 @@ function Conversation ({ participantId }) {
 
 }
 
-export default Conversation;
+export default Messages;

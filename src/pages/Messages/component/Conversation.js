@@ -1,9 +1,9 @@
 import Cookies from 'js-cookie'
 
-import './ConversationItem.scoped.css';
+import './Conversation.scoped.css';
 
 
-function ConversationItems ({ messages, imageLoggedInUser, imageParticipant, loggedInUserId}) { 
+function Conversation ({ messages, imageLoggedInUser, imageParticipant, loggedInUserId}) { 
 
     return (
         <div>
@@ -37,4 +37,4 @@ function ConversationItems ({ messages, imageLoggedInUser, imageParticipant, log
     )
 }
 
-export default ConversationItems;
+export default Conversation;
