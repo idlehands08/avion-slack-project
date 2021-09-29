@@ -1,4 +1,4 @@
-import Search from '../Search/Search';
+import Search from './component/Search';
 import { BiTime } from 'react-icons/bi';
 import { FiHelpCircle } from 'react-icons/fi';
 import './Header.scoped.css';
