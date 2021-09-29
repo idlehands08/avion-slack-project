@@ -13,6 +13,7 @@ function Sidebar ({ routes }) {
     let history = useHistory();
     const [isToggled, setIsToggled] = useState(false);
     const [directMessageList, setDirectMessageList]  = useState([]);
+    const [loggedInUserId, setLoggedInUserId] = useState(0);
 
     const NavHeader = () => {
         return (
@@ -49,7 +50,7 @@ function Sidebar ({ routes }) {
             item.name=faker.fake("{{name.firstName}} {{name.lastName}}");
             item.image=faker.fake("{{image.avatar}}");
         });
-
+        setLoggedInUserId(array[0].id); 
         setDirectMessageList(array);
     }
     
@@ -78,7 +79,7 @@ function Sidebar ({ routes }) {
                         Direct Messages
                     </div>
                     { isToggled &&
-                        <DirectMessageList showCloseIcon={showCloseIcon} directMessageList={directMessageList} />
+                        <DirectMessageList showCloseIcon={showCloseIcon} directMessageList={directMessageList} loggedInUserId={loggedInUserId} />
                     }
                 </div>
             </nav>
