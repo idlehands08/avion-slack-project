@@ -24,7 +24,7 @@ function App() {
       password_confirmation: '12345678'
     }
     const { 
-      email, 
+      email,  
       password, 
       password_confirmation 
     } = payload
