@@ -16,11 +16,11 @@ const AuthApi = () => {
             'password': password
         }).then(({ data, headers }) => {
             if (data) {
-                Cookies.set('access-token', headers['access-token'])
-                Cookies.set('client', headers['client'])
-                Cookies.set('uid', headers['uid'])
-                Cookies.set('expiry', headers['expiry'])
-                window.location= '/'
+                Cookies.set('access-token', headers['access-token']);
+                Cookies.set('client', headers['client']);
+                Cookies.set('uid', headers['uid']);
+                Cookies.set('expiry', headers['expiry']);
+                window.location= '/';
             }
         }).catch(err => {
             callback(err.response.data)
@@ -33,6 +33,7 @@ const AuthApi = () => {
        Cookies.remove('client');
        Cookies.remove('uid');
        Cookies.remove('expiry');
+       Cookies.remove('userId');
    }
 
     return {
