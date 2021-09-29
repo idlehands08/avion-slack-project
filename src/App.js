@@ -39,7 +39,7 @@ function App() {
     const payload = {
       'receiver_id': 799,
       'receiver_class': "User",
-      'body': "Hello POTPOT1!!! Okay naman ako hehe"
+      'body': "May joke ako"
     }
 
     await messageApi.send(payload)

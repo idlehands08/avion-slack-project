@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { Switch, withRouter } from 'react-router-dom';
 
 // components
 import App from '../App';
@@ -18,8 +18,8 @@ const routes = () => {
             <UserRoutes path="/temporary" exact component={App} />
             <UserRoutes path="/" exact component={Home} />
             <AuthRoute path="/login" exact component={Login} />
-            <UserRoutes path='/messages/:id' exact component={Messages} />
             <AuthRoute path="/signup" exact component={Registration}/>
+            <UserRoutes path='/messages/:receiverId' exact component={Messages} />
             <UserRoutes path="/shared" exact component={Shared} />
         </Switch>
     );
