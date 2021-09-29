@@ -47,7 +47,7 @@ function Sidebar ({ routes }) {
             .concat(array.filter(item => item.uid !== Cookies.get('uid')));
             
         array.map(item => {
-            item.name=faker.fake("{{name.firstName}} {{name.lastName}}");
+            item.name=faker.fake("{{name.firstName}}");
             item.image=faker.fake("{{image.avatar}}");
         });
         setLoggedInUserId(array[0].id); 
@@ -56,7 +56,7 @@ function Sidebar ({ routes }) {
     
     const getDirectMessages = async () => {
         await UserApi.recentMessages()
-          .then(res =>rearrangeArray(res.data.data))
+          .then(res => rearrangeArray(res.data.data))
           .catch(error => console.log(error.response.data.errors))
     }
 

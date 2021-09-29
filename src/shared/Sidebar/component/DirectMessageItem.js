@@ -8,7 +8,7 @@ function DirectMessageItem ({ item, showCloseIcon,loggedInUserId }) {
     return (
         <NavLink 
             onMouseEnter={showCloseIcon} 
-            to={`recipient/1`} 
+            to={`../messages/${item.id}`} 
             exact activeClassName={style.isActive} 
             className="direct-message-item">
             <Image 
