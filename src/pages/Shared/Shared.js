@@ -4,7 +4,7 @@ import Button from '../../shared/Button/Button';
 import Container from '../../shared/Container/Container';
 import Sidebar from '../../shared/Sidebar/Sidebar';
 import Header from '../../shared/Header/Header';
-import Search from '../../shared/Search/Search';
+import Search from '../../shared/Header/component/Search';
 
 function Shared () {
     return (

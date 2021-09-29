@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'; 
-import SearchForm from './component/SearchForm';
+import SearchForm from '../../Search/SearchForm';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { FiSearch } from 'react-icons/fi';
 import { AiOutlineClose } from 'react-icons/ai';
-import SearchInput from './component/SearchInput';
+import SearchInput from '../../Search/SearchInput';
 
 import './Search.scoped.css';
 
