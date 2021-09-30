@@ -6,10 +6,8 @@
 
 .container-conversation {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     width: 100%;
-    min-height: 100vh;
-    
 }
 
 .container-conversation-items {
@@ -19,4 +17,19 @@
 .container-text-area {    
     margin-left: 16px;
     margin-right: 16px;
+}
+
+.justify-bottom {
+    justify-content: flex-end;
+}
+
+.messages-container {
+    height: 80%;
+    overflow: auto;
+    display: flex;
+}
+
+.content {
+    overflow: auto;
+    gap: 15px;
 }

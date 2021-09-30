@@ -3,5 +3,5 @@
     flex-direction: column;
     gap: 15px;
     min-width: 300px;
-    
+    justify-content: center;
 }

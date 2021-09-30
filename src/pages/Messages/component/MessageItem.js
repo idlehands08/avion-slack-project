@@ -9,7 +9,7 @@ function MessageItem ({ message }) {
     }
 
     return (
-        <li>
+        <div className="d-flex" style={{ overflow: 'auto' }}>
             <Image 
                 source={message.image}
                 width={36}
@@ -21,7 +21,7 @@ function MessageItem ({ message }) {
                     { message.body.map((body, i) =><small key={i}>{ body }</small>) }
                 </div>
             </div>  
-        </li>
+        </div>
     )
 }
 
