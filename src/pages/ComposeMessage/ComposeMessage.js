@@ -2,15 +2,12 @@ import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import Faker from 'faker';
 import SearchInput from '../../shared/Search/SearchInput';
-import './ComposeMessage.scoped.css';
-import '../../shared/Search/SearchInput';
 import TextArea from '../../shared/TextArea/TextArea';
 import SearchList from '../../shared/Search/SearchList';
-
 import UserApi from '../../api/UserApi';
+import './ComposeMessage.scoped.css';
 
 function ComposeMessage () {
-
     const [searched, setSearched] = useState('');
     const [results, setResults] = useState([]);
 
@@ -29,7 +26,6 @@ function ComposeMessage () {
     }
 
     const handleUsers = (array) => {
-      
         array = array.filter(item => item.uid === Cookies.get('uid'))
             .concat(array.filter(item => item.uid !== Cookies.get('uid')));
             
@@ -37,14 +33,11 @@ function ComposeMessage () {
             item.name=Faker.fake("{{name.firstName}} {{name.lastName}}");
             item.image=Faker.fake("{{image.avatar}}");
         });
-        console.log(array);
         let array2=[];
         for(let i = 0; i < 20; i++) {
             array2.push(array[i]);
         }
-        setResults(array2); 
-        console.log(array2);
-        
+        setResults(array); 
     }
 
     return (
@@ -66,10 +59,10 @@ function ComposeMessage () {
                 {searched!==''  && 
                 <div className="wrapper-searchlist">
                     <div className="container-searchlist">
-                            <SearchList 
-                                results={results}
-                                searched={searched}
-                                customClass='compose-message-search'
+                        <SearchList 
+                            results={results}
+                            searched={searched}
+                            customClass='compose-message-search'
                         />
                     </div>
                 </div>}
@@ -77,7 +70,6 @@ function ComposeMessage () {
             <div className="container-textarea">
               <TextArea />
             </div>
-            
         </div>
     )
 }
