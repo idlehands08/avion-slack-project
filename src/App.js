@@ -12,9 +12,9 @@ function App() {
 
   const handleRegistration = async () => {
     const payload = {
-      email: 'potpot2@mail.com',
-      password: 'potpot2',
-      password_confirmation: 'potpot2'
+      email: 'potpot3@mail.com',
+      password: 'potpot3',
+      password_confirmation: 'potpot3'
     }
     const { 
       email,  
