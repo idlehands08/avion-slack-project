@@ -8,7 +8,7 @@ function TextArea ({ placeholder, handleOnChange, value }) {
     const [isFocused, setIsFocused] = useState(false);
 
     useEffect(() => {
-        const scrollHeight = computeTextHeight(20);
+        const scrollHeight = computeTextHeight(50);
         textareaRef.current.style.overflow = scrollHeight > window.innerHeight / 2 ? 'auto' : 'hidden';
     }, [value])
 

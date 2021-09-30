@@ -19,9 +19,11 @@ function Sidebar ({ routes }) {
         return (
             <header className="d-flex align-middle">
                 Avion Slack
-                <button>
-                    <IoCreateOutline className="io-create" />
-                </button>
+                <NavLink className='compose-nav-link' activeClassName='compose-nav-link' to='/compose' >
+                    <button>
+                        <IoCreateOutline className="io-create" />
+                    </button>
+                </NavLink>
             </header>
         );
     }

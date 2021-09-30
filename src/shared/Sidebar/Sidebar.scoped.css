@@ -1,3 +1,7 @@
+header:hover {
+    background-color: #350d36;
+}
+
 nav {
     background-color: #3F0E40;
     min-width: 260px;
@@ -15,6 +19,17 @@ a {
     align-items: center;
     padding: 0 15px;
     gap: 10px;
+}
+
+.compose-nav-link {
+    background-color: none;
+    color: none;
+    display: block;
+}
+
+.compose-nav-link:hover {
+    background-color: none;
+    color: none;
 }
 
 .children-item {

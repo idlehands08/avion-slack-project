@@ -29,3 +29,14 @@ svg {
 .search-form-default::placeholder { 
     color: #fdffff;
 }
+
+.search-input-compose {
+    padding: 0px;
+    width: 100%;
+    border: none;
+    margin-left: 12px;
+    font-size: 15px;
+}
+.search-input-compose:focus {
+    outline: none;
+}
