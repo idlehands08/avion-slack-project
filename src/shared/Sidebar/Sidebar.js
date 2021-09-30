@@ -20,13 +20,15 @@ function Sidebar ({ routes }) {
             <header className="d-flex align-middle">
                 Avion Slack
                 <NavLink className='compose-nav-link' activeClassName='compose-nav-link' to='/compose' >
-                    <button>
+                    <button class="new-message">
                         <IoCreateOutline className="io-create" />
+                        <span class="new-hover">New Message</span>
                     </button>
                 </NavLink>
             </header>
         );
     }
+
 
     useEffect(() => {
        getDirectMessages();
