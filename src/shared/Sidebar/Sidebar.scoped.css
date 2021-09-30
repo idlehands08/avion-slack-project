@@ -99,3 +99,31 @@ button {
 .io-create {
     font-size: 18px;
 }
+
+
+.new-message {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+  
+  .new-message .new-hover {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -60px;
+  }
+  
+  .new-message:hover .new-hover {
+    visibility: visible;
+  }
