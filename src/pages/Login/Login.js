@@ -69,8 +69,6 @@ function Login () {
                 error: '' 
             });
         }
-
-        console.log(email.valid)
     }
 
     const handleAuthentication = (email, password) => {
