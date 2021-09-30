@@ -1,58 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { alignMessagesWithUser } from '../../utils';
+import Cookies from 'js-cookie';
 import MessageItem from './component/MessageItem';
 import MessageApi from '../../api/MessageApi';
 import TextArea from '../../shared/TextArea/TextArea';
-import './Messages.scoped.css';
 import faker from 'faker';
 
-import Cookies from 'js-cookie';
+import './Messages.scoped.css';
 
 function Messages () {
     const [messages, setMessages] = useState([]);
+    const [value, setValue] = useState('');
+    const [receiver, setReceiver] = useState('');
     const { receiverId } = useParams();
 
     useEffect(() => {
         retrieveMessage();
     }, [receiverId]);
-
-    const alignMessagesWithUser = (data) => {
-        let body = [];
-        let processedMessages = [];
-        let name = '';
-        let image = '';
-
-        // loop over response data
-        for (let i = 0; i < data.length; i++) {
-            if (i !== 0) {
-                // check if the current send is same with the previous one
-                if (data[i]['sender'].email === data[i - 1]['sender'].email) {
-                    // push all body that belongs to current user
-                    body.push(
-                        ...processedMessages[processedMessages.length - 1].body,
-                        data[i].body
-                    );
-                    name = data[i].name;
-                    image = data[i].image;
-                    // remove previous data to set newly added body
-                    processedMessages.pop();
-                } else {
-                    body.push(data[i].body);
-                    name = data[i].name;
-                    image = data[i].image;
-                }
-            } else {
-                body.push(data[i].body);
-                name = data[i].name;
-                image = data[i].image;
-            }
-            
-            processedMessages.push({ body, name, image });
-            body = [];
-        }
-
-        return processedMessages;
-    }
     
     const retrieveMessage = async () => {
         const params =`receiver_class=User&receiver_id=${receiverId}`
@@ -64,6 +29,7 @@ function Messages () {
             name: faker.fake("{{name.firstName}} {{name.lastName}}"),
             image: faker.fake("{{image.avatar}}")
         }
+        setReceiver(fakeReceiver.name);
     
         await MessageApi.retrieve(params)
           .then(res => {
@@ -83,23 +49,27 @@ function Messages () {
           .catch(error => console.log(error.response.data.errors))
     }
 
+    const handleOnChange = (e) => {
+        setValue(e.target.value)
+    }
+
     return (
-        <div className='container-conversation'>
-            <div className='container-text-area'>
-                <TextArea/>
+        <div className="container full-content d-flex flex-column justify-bottom" style={{ gap: '20px' }}>
+            <div className="d-flex flex-column justify-bottom content">
+                { 
+                    messages.map((message, index) => {
+                        return <MessageItem 
+                            key={index} 
+                            message={message} 
+                        />
+                    }) 
+                }
             </div>
-            <div className='container-conversation-items'>
-                <ul>
-                    { 
-                        messages.map((message, index) => {
-                            return <MessageItem 
-                                key={index} 
-                                message={message} 
-                            />
-                        }) 
-                    }
-                </ul>
-            </div>
+            <TextArea
+                placeholder={`Message ${receiver}`}
+                handleOnChange={handleOnChange}
+                value={value}
+            />
         </div>
     )
 }

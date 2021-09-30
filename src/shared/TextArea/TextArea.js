@@ -8,17 +8,18 @@ function TextArea ({ placeholder, handleOnChange, value }) {
     const [isFocused, setIsFocused] = useState(false);
 
     useEffect(() => {
-        const scrollHeight = computeTextHeight(50);
+        // const scrollHeight = computeTextHeight(50);
+        const scrollHeight = computeTextHeight(10);
         textareaRef.current.style.overflow = scrollHeight > window.innerHeight / 2 ? 'auto' : 'hidden';
     }, [value])
 
     const handleFocus = () => {
-        computeTextHeight(20)
+        computeTextHeight(10)
         setIsFocused(true);
     }
 
     const handleBlur = () => {
-        computeTextHeight(19);
+        computeTextHeight(9);
         setIsFocused(false);
     }
 
@@ -46,7 +47,10 @@ function TextArea ({ placeholder, handleOnChange, value }) {
                 onBlur={handleBlur}
             />
             <div id="send-container" className={ isFocused ? 'focus' : '' }>
-                <button onClick={handleSendMessage}>
+                <button 
+                    onClick={handleSendMessage}
+                    className={!value && 'is-empty'}
+                >
                     <RiSendPlane2Fill />
                 </button>
             </div>
