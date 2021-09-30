@@ -4,11 +4,17 @@ import Button from '../../shared/Button/Button';
 import Container from '../../shared/Container/Container';
 import Sidebar from '../../shared/Sidebar/Sidebar';
 import Header from '../../shared/Header/Header';
-import SearchBar from '../../shared/SearchBar/SearchBar';
+import Search from '../../shared/Header/component/Search';
+import Footer from '../../shared/Footer/Footer';
 
 function Shared () {
     return (
         <div className="container">
+            <div> 
+                <h3>FOOTER</h3>
+                <Footer 
+                text='Disclaimer: This app is for educational purposes only &#9888;' />
+            </div>
             <h1>List of shared components</h1>
             <div style={{width: '300px'}}>
                 <h3>Input</h3>
@@ -63,13 +69,15 @@ function Shared () {
                 <Sidebar />
             </div>
             <div>
-                <h3>SearchBar</h3>
-                <SearchBar placeholder={'Insert placeholder here'} />
+                <h3>Search</h3>
+                <Search placeholder={'Insert placeholder here'} />
             </div>
             <div>
                 <h3>Header</h3>
                 <Header />
+            
             </div>
+            
         </div>
     )
 }

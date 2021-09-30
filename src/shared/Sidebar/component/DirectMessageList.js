@@ -1,10 +1,17 @@
 import DirectMessageItem from './DirectMessageItem';
 import './DirectMessageList.scoped.css'
 
-function DirectMessageList ({ showCloseIcon, directMessageList }) {
+function DirectMessageList ({ showCloseIcon, directMessageList, loggedInUserId}) {
     return (
         <ul>
-            { directMessageList.map(item => <DirectMessageItem item={item.uid} showCloseIcon={showCloseIcon} />) }
+            { directMessageList.map(item => {
+                return <DirectMessageItem 
+                    key={item.id} 
+                    item={item} 
+                    showCloseIcon={showCloseIcon} 
+                    loggedInUserId={loggedInUserId}
+                />
+            }) }
         </ul>
     )
 }

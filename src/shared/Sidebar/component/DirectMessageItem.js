@@ -1,15 +1,22 @@
 import { NavLink } from "react-router-dom";
-import { FaRegUser } from 'react-icons/fa';
 import style from './DirectMessageItem.scoped.css';
+import Image from '../../Image/Image';
 
-function DirectMessageItem ({ item, showCloseIcon }) {
+function DirectMessageItem ({ item, showCloseIcon,loggedInUserId }) {
+    const imgStyle = { borderRadius: '4px' }
+
     return (
         <NavLink 
             onMouseEnter={showCloseIcon} 
             to={`recipient/1`} 
             exact activeClassName={style.isActive} 
             className="direct-message-item">
-            <FaRegUser /> {item}
+            <Image 
+                source={item.image} 
+                width={20}
+                customStyle={imgStyle}
+            /> {item.name}
+             <span className="guest-label">{loggedInUserId === item.id ? 'you guest' : 'guest'}</span>   
         </NavLink>
     )
 }

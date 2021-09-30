@@ -1,0 +1,29 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;    
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    list-style: none;
+}
+
+img {
+    height: 36px;
+    width: 36px;
+    border-radius: 4px;
+}
+
+li {
+    display: flex;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.flex-column {
+    margin-left: 16px;
+}
+

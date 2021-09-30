@@ -10,18 +10,11 @@ function App() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
-  const headers = {
-    'access-token': Cookies.get('access-token'),
-    'client': Cookies.get('client'),
-    'uid': Cookies.get('uid'),
-    'expiry': Cookies.get('expiry')
-  }
-
   const handleRegistration = async () => {
     const payload = {
-      email: '_1z____user2@example.com',
-      password: '12345678',
-      password_confirmation: '12345678'
+      email: 'potpot2@mail.com',
+      password: 'potpot2',
+      password_confirmation: 'potpot2'
     }
     const { 
       email,  
@@ -44,9 +37,9 @@ function App() {
 
   const sendMessage = async () => {
     const payload = {
-      'receiver_id': 1,
+      'receiver_id': 799,
       'receiver_class': "User",
-      'body': "kamusta?"
+      'body': "Hello POTPOT1!!! Okay naman ako hehe"
     }
 
     await messageApi.send(payload)
