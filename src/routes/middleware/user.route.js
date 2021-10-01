@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import Sidebar from '../../shared/Sidebar/Sidebar';
 import Header from '../../shared/Header/Header';
+import Footer from '../../shared/Footer/Footer';
 
 import AuthApi from '../../services/AuthApi';
 
@@ -28,8 +29,12 @@ function UserRoutes ({ component: Component, ...rest }) {
                         }
                     }}
                 />
+                    <div>
+                        <Footer text= "Disclaimer: This app is for educational purposes only."/>
+                </div>
             </div>
         </div>
+       
     )
 }
 

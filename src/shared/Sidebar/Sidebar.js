@@ -6,7 +6,7 @@ import faker from 'faker';
 
 import DirectMessageList from './component/DirectMessageList';
 import UserApi from '../../api/UserApi';
-
+ 
 import { TiMessages, TiMessage } from 'react-icons/ti';
 import { IoCreateOutline } from 'react-icons/io5';
 
