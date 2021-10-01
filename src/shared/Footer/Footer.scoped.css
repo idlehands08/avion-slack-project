@@ -4,7 +4,15 @@
     margin: 0;    
 }
 
-.Footer {
+text {
+    padding: 0 15px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+
+.footer {
     height: 38px;
     background-color: #350D36;
     display: flex;
@@ -14,11 +22,4 @@
     width: 100%; 
 }
 
-text {
-    color:blanchedalmond;
-    font-size: large;
-    font-family: Arial;
-    font-weight: light;
-    letter-spacing: 1px;
-}
 

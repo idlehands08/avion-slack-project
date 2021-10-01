@@ -12,7 +12,7 @@ function Shared () {
         <div className="container">
             <div>
                 <Footer 
-                text="Disclaimer: This app is for educational purposes only &#9888;" />
+                text="Disclaimer: This app is for educational purposes only." />
             </div>
             <h1>List of shared components</h1>
             <div style={{width: '300px'}}>

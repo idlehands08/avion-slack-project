@@ -1,9 +1,9 @@
-import React from 'react'
-import './Footer.scoped.css'
+import React from 'react';
+import './Footer.scoped.css';
 
 function Footer ({ text }) {
     return (
-        <div className="Footer">
+        <div className="footer">
             <text>{ text }</text>
         </div>
     )
