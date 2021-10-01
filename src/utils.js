@@ -6,8 +6,6 @@ export const isEmpty = (string) => {
     return !string ? true : false;
 }
 
-
-
 export const alignMessagesWithUser = (data) => {
     let body = [];
     let processedMessages = [];
@@ -44,4 +42,18 @@ export const alignMessagesWithUser = (data) => {
     }
 
     return processedMessages;
+}
+
+// filter duplicate items and return a unique elements
+export const filterToUnique = (array) => {
+    let uniqueArr = [];
+    array.forEach(item => {
+        const result = uniqueArr.some(unique => item.id === unique.id);
+
+        if (!result) {
+            uniqueArr.push(item);
+        }
+    })
+
+    return uniqueArr;
 }
